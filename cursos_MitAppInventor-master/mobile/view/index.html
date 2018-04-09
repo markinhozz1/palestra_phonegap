@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <script src="assets/js/jquery.min.js" charset="utf-8"></script>
+  <script src="assets/js/bootstrap.min.js" charset="utf-8"></script>
+  <title>Divulgação</title>
+</head>
+<body>
+  <div class="container">
+    <h3>Cursos disponíveis</h3>
+
+    <div id="nome_cursos" class="list-group" style="margin-top: 25px;"></div>
+
+  </div>
+
+<script type="text/javascript">
+$(function(){
+  $.get('../../administrativo/model/recurso.php?modulo=curso', function(data){
+    for(var i = 0; i < data.length; i++){
+      // '<a href="visualizar.php?modulo='+data[i].id+'" class="list-group-item list-group-item-action">'+data[i].nome+'</a>'
+      $("#nome_cursos").append($(
+      '<a href="visualizar.php?modulo='+data[i].id+'" class="list-group-item list-group-item-action">'+data[i].nome+'</a>'
+    ));
+    }
+  },'json');
+});
+</script>
+</body>
+</html>
